@@ -1,150 +1,214 @@
-Transportation Network Analysis with Graph Theory 
+Transportation Network Analysis with Graph Theory 🚚
 
-Graph-based analysis of a retail transportation network to understand delivery patterns, truck capacity and store connectivity.
+Use Graph Theory to analyse a retail transportation network, understand store connectivity and explore route optimisation opportunities.
 
 Objective
 
-Build graphical representations of a retail transportation network to support transportation analysis and optimisation studies using Graph Theory.
+Build graphical representations of a retail transportation network to understand delivery patterns, truck capacity, store connectivity and network structure.
 
 Introduction
 
-Delivery records are transformed into a network where stores are nodes and co-deliveries are edges. Repeated co-deliveries are represented through edge weights, while store provinces provide an additional network attribute.
+Retail transportation involves serving stores through a combination of single-store and multi-store deliveries.
 
-The project combines logistics analytics with graph analysis to study route consolidation, truck-capacity patterns, store connectivity, province relationships and potential route-group opportunities.
+In this project, historical delivery records are transformed into a network to study how stores are connected through shared delivery routes.
 
-Inspiration & Credit
+The analysis combines operational delivery analysis with Graph Theory, province-level analysis, community detection and interactive 3D visualisation.
 
-This project was independently developed with inspiration from the transportation network analysis work of Samir Saci.
+Inspiration
 
-Original work:
+This project was independently developed with inspiration from the work of Samir Saci on transportation network analysis using Graph Theory.
 
-Transportation Network Analysis with Graph Theory
+Original article:
+https://www.samirsaci.com/transportation-network-analysis-with-graph-theory/
 
-Original GitHub Repository
+Original GitHub repository:
+https://github.com/samirsaci/graph-theory
 
-The original work is acknowledged as the conceptual reference for the transportation-network approach and visualisation style. Additional network metrics, province analysis, community detection, operational analysis and interactive 3D visualisations were developed independently.
+Samir Saci's work is acknowledged as the conceptual reference for the transportation-network approach. The additional analyses and visualisations in this repository were developed independently.
 
 Scenario
 
-The project analyses retail delivery records containing delivery time information, truck capacity, transported tons and store codes included in each delivery. A separate reference sheet maps store codes to provinces.
+The project uses retail delivery records containing:
 
-Graph Representation
+Delivery period
 
-Element
+Delivery date
 
-Meaning
+Truck capacity
 
-Node
+Total transported tons
 
-Store
+Store codes included in each delivery
 
-Edge
+A separate reference file maps store codes to provinces.
 
-Stores delivered together
+Solution: Graph Theory
 
-Edge weight
+The transportation network is represented as an undirected weighted graph.
 
-Co-delivery frequency
+Node → Store
 
-Node attribute
+Edge → Two stores delivered together
 
-Province
+Edge weight → Co-delivery frequency
 
-Truck capacities
+Node attribute → Province
 
-3.5T, 5T and 8T
+Truck capacity → 3.5T, 5T or 8T
+
+For example, a delivery containing three stores creates connections between each pair of stores.
+
+Exploratory Analysis
+
+Number of Routes per Truck Size
+
+
+
+Distribution of Store Deliveries by Truck Size
+
+
+
+Store Deliveries per Route
+
+
+
+Single-Store vs Multi-Store Deliveries
+
+
+
+Transportation Network
+
+The complete delivery network is constructed from historical co-delivery relationships.
+
+
 
 Truck Capacity Analysis
 
-The project compares 3.5T, 5T and 8T trucks through route counts, delivery distribution and average stores delivered per route.
+The network is also analysed separately for:
+
+3.5T
+
+5T
+
+8T
+
+3.5T Network
 
 
 
+5T Network
 
+
+
+8T Network
+
+
+
+Combined Truck Capacity Network
+
+Truck-capacity relationships are visualised using:
+
+🔴 3.5T
+
+🟡 5T
+
+🔵 8T
+
+Store nodes are coloured by province.
 
 
 
 Network Analysis
 
-The transportation network is analysed using NetworkX to identify highly connected stores, weighted connectivity, frequently co-delivered store pairs, isolated stores and network density.
+The project analyses store connectivity using:
+
+Degree
+
+Weighted degree
+
+Network density
+
+Isolated stores
+
+Frequently co-delivered store pairs
+
+Most Connected Stores
 
 
 
-Truck-Specific Networks
+Weighted Store Connectivity
 
 
 
+Strongest Store Pairs
 
 
 
+Province Analysis
+
+Store-level relationships are also aggregated at province level.
+
+Store Distribution by Province
 
 
 
-The combined capacity visualisation uses red for 3.5T, yellow for 5T and blue for 8T, while store nodes are coloured by province.
-
-Store & Delivery Insights
-
-
-
-
-
-
-
-
-
-
-
-
+Province Connectivity
 
 
 
 Community Detection
 
-Weighted community detection is used to identify groups of stores with relatively strong internal connectivity. These communities are analytical groups, not confirmed operational routes.
+Weighted community detection is used to identify groups of stores with relatively strong internal connections.
 
 
 
+Community Size
 
 
 
+Community Composition by Province
 
-Interactive 3D Networks
 
-Three interactive Plotly visualisations are generated:
+
+These communities are analytical network groups rather than confirmed operational routes. Actual route planning would require operational constraints such as distance, delivery windows, vehicle availability and transportation cost.
+
+Interactive 3D Network Analysis
+
+The project also includes interactive Plotly visualisations for deeper network exploration.
 
 Province-Based 3D Network
 
+Open Interactive Province Network
+
 Community-Based 3D Network
+
+Open Interactive Community Network
 
 Truck Capacity 3D Network
 
-The 3D networks allow rotation, zooming and store-level inspection through interactive hover information.
+Open Interactive Truck Capacity Network
 
 Further Analysis
 
-The network can support investigation of:
+The network can be used to investigate questions such as:
 
-highly connected and isolated stores
+Which stores are highly connected?
 
-repeated store-to-store relationships
+Which stores are isolated?
 
-province-level connectivity
+Which store pairs are repeatedly delivered together?
 
-truck-capacity-specific network structure
+How does truck capacity affect network structure?
 
-multi-store delivery opportunities
+Which provinces have stronger transportation relationships?
 
-strongly connected store groups
+Which store groups could be investigated for future route consolidation?
 
-Actual route optimisation would require additional operational constraints such as road distance, delivery windows, vehicle availability, capacity limits and transportation cost.
+The analysis provides decision support and does not by itself produce an operationally feasible optimised route.
 
-Project Structure
+Files
 
 Transportation-Network-Analysis/
-│
-├── main.py
-├── README.md
-├── .gitignore
 │
 ├── data/
 │   ├── delivery records.xlsx
@@ -163,49 +227,46 @@ Transportation-Network-Analysis/
 │   ├── province_connectivity_heatmap.png
 │   ├── full_transportation_network.png
 │   ├── network_3_5T.png
-│   ├── network_5T.png
+│   ├── network_5_0T.png
 │   ├── network_8_0T.png
 │   ├── truck_capacity_network_comparison.png
 │   ├── community_network.png
 │   ├── community_size.png
-│   ├── community_province_composition.png
-│   └── monthly_network_<month>.png
+│   └── community_province_composition.png
 │
-└── interactive/
-    ├── province_network_3d.html
-    ├── community_network_3d.html
-    └── truck_capacity_network_3d.html
-
-Dataset
-
-The project data is available in the data/ folder:
-
-Delivery Records
-
-Store Province Reference
-
-Technologies
-
-Python · Pandas · NumPy · NetworkX · Matplotlib · Plotly · OpenPyXL
+├── interactive/
+│   ├── province_network_3d.html
+│   ├── community_network_3d.html
+│   └── truck_capacity_network_3d.html
+│
+├── main.py
+└── README.md
 
 Getting Started
 
 pip install pandas numpy networkx matplotlib plotly openpyxl
 python main.py
 
-The script generates the static visualisations in images/ and the interactive 3D HTML files in interactive/.
+Static visualisations are saved in images/ and interactive 3D visualisations are saved in interactive/.
 
-Author
+Technologies
 
-Abirami Kumarasamy
-MSc Data Science with Logistics & Supply Chain Management
-
-Focus: Supply Chain Analytics · Logistics Analytics · Transportation Analytics · Graph Theory
+Python · Pandas · NumPy · NetworkX · Matplotlib · Plotly · OpenPyXL
 
 Acknowledgement
 
-Special thanks to Samir Saci for the original transportation network analysis work that inspired this project.
+Special thanks to Samir Saci for the original transportation-network analysis work that inspired this project.
+
+Original work:
 
 https://github.com/samirsaci/graph-theory
 
 https://www.samirsaci.com/transportation-network-analysis-with-graph-theory/
+
+This repository is an independent implementation and extension. The additional operational analysis, weighted network metrics, province analysis, community detection and interactive 3D visualisations were developed independently.
+
+Author
+
+Abirami Kumarasamy
+
+MSc Data Science with Logistics & Supply Chain Management
