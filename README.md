@@ -1,4 +1,4 @@
-Transportation Network Analysis with Graph Theory 🚚
+Transportation Network Analysis with Graph Theory 
 
 Graph-based analysis of a retail transportation network to understand delivery patterns, truck capacity and store connectivity.
 
